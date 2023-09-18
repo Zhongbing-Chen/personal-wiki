@@ -6,22 +6,31 @@ const { execSync } = require('child_process');
 const sourceFolder = './pages/source';
 const destinationFolder = './pages/docs';
 
+// Define the file extensions to process
+const fileExtensions = ['.md', '.mdx'];
+
+// Function to delete a folder
+function deleteFolder(folder) {
+    execSync(`rm -rf ${folder}`);
+}
+
 // Function to copy a folder to a new location
 function copyFolder(source, destination) {
+    deleteFolder(destination);
     execSync(`cp -R ${source} ${destination}`);
 }
 
 // Function to generate the _meta.json file for a folder
 function generateMetaFile(folderPath) {
-    // Get the name of the Markdown files within the folder
+    // Get the names of the Markdown files within the folder
     const files = fs.readdirSync(folderPath);
-    const mdFiles = files.filter(file => file.endsWith('.md')||file.endsWith('.mdx'));
+    const mdFiles = files.filter(file => fileExtensions.includes(path.extname(file)));
 
     if (mdFiles.length > 0) {
         const meta = {};
 
         mdFiles.forEach(mdFile => {
-            const originalName = mdFile.replace('.md', '');
+            const originalName = path.basename(mdFile, path.extname(mdFile));
             const revisedName = originalName.replace(/ /g, '-');
 
             meta[revisedName] = originalName;
@@ -60,7 +69,7 @@ function renameMdFiles(dir) {
 
         if (file.isDirectory()) {
             renameMdFiles(filePath);
-        } else if (file.isFile() && file.name.endsWith('.md')) {
+        } else if (file.isFile() && fileExtensions.includes(path.extname(file.name))) {
             const newFileName = file.name.replace(/ /g, '-');
             const newFilePath = path.join(dir, newFileName);
 
