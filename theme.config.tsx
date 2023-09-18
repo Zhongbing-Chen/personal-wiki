@@ -45,9 +45,8 @@ const logo = (
 
 const config: DocsThemeConfig = {
   project: {
-    link: 'https://github.com/shuding/nextra'
+    link: 'https://github.com/Zhongbing-Chen'
   },
-  docsRepositoryBase: 'https://github.com/shuding/nextra/tree/main/docs',
   useNextSeoProps() {
     const { asPath } = useRouter()
     if (asPath !== '/') {
@@ -115,10 +114,10 @@ const config: DocsThemeConfig = {
   //   )
   // },
   editLink: {
-    text: 'Edit this page on GitHub →'
+    text: null
   },
   feedback: {
-    content: 'Question? Give us feedback →',
+    content: null,
     labels: 'feedback'
   },
   sidebar: {
