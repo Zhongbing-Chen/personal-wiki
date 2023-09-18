@@ -142,8 +142,8 @@ const config: DocsThemeConfig = {
             title="vercel.com homepage"
             href="http://124.221.36.105:3000"
           >
-            <span>Powered by</span>
-              Zhongbing Chen
+            <span>Powered by </span>
+                 Zhongbing Chen
           </a>
         </div>
         <p className="mt-6 text-xs">
