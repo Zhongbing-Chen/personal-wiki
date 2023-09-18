@@ -1,4 +1,8 @@
 {
+  "source":{
+    "type": "page",
+    "display": "hidden"
+  },
   "index": {
     "type": "page",
     "title": "Zhongbing's Wiki",
