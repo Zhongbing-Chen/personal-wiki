@@ -1,8 +1,7 @@
 import './style.css'
 import { useRouter } from '../customRouter';
 export default function App({ Component, pageProps }) {
-  const router = useRouter();
 
   // Use the custom router instead of the default Next.js router
-  return <Component {...pageProps} router={router} />;
+  return <Component {...pageProps} />;
 }
